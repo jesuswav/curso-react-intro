@@ -1,6 +1,11 @@
 function CreateTodoButton() {
   return (
-    <button>New Todo</button>
+    <button className="TodoButton" onClick={
+      (event) => {
+        console.log('click')
+        console.log(event)
+      }
+    }>+</button>
   );
 }
 
