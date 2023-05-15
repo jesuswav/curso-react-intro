@@ -24,11 +24,27 @@ function App() {
   const searchedTodos = todos.filter((todo) => {
     const todoText = todo.text.toLowerCase();
     const searchText = searchValue.toLowerCase();
-    
+
     return todoText.includes(searchText);
   });
 
-  console.log("Los usuarios buscan TOdos de " + searchValue);
+  const completeTodo = (text) => {
+    const newTodos = [...todos]; //nuevo array que recibe los valores actuales en cada actualización
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text //buscamos el index de las tareas
+    );
+    newTodos[todoIndex].completed = true; //buscamos el index de las tareas completadas
+    setTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos]; //nuevo array que recibe los valores actuales en cada actualización
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text //buscamos el index de las tareas
+    );
+    newTodos.splice(todoIndex, 1); //con este método cortamos los 
+    setTodos(newTodos);
+  };
 
   return (
     <>
@@ -41,6 +57,8 @@ function App() {
             key={todo.text}
             text={todo.text}
             completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
           />
         ))}
       </TodoList>
