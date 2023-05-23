@@ -1,5 +1,5 @@
 function TodoCounter({ total, completed }) {
-  if (total == completed) {
+  if (total === completed) {
     return (
       <h1 className="TodoCounter">
         Felicidades!! haz completado TODOS los ToDo´s
