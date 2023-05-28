@@ -21,7 +21,7 @@ function App() {
     error,
   } = useLocalStorage("TODOS_V1", []); // estado
   // ahora podemos llamar a nuestro custom hook en lugar de el actualizador de react
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState(""); //estado para buscar
 
   // estados derivados
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
