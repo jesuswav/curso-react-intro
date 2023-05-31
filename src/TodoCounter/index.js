@@ -1,11 +1,19 @@
-function TodoCounter({ total, completed }) {
-  if (total === 0) {
+import React from "react";
+import { TodoContext } from "../TodoContext";
+
+function TodoCounter() {
+  const {
+    completedTodos,
+    totalTodos,
+  } = React.useContext(TodoContext);
+
+  if (totalTodos === 0) {
     return (
       <h1 className="TodoCounter">
         Cargando Todos..
       </h1>
     );
-  } else if (total === completed) {
+  } else if (totalTodos === completedTodos) {
     return (
       <h1 className="TodoCounter">
         Felicidades!! haz completado TODOS los ToDo´s
@@ -14,7 +22,7 @@ function TodoCounter({ total, completed }) {
   } else {
     return (
       <h1 className="TodoCounter">
-        Haz completado {completed} de {total} ToDo´s
+        Haz completado {completedTodos} de {totalTodos} ToDo´s
       </h1>
     );
   }

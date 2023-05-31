@@ -1,10 +1,21 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
+// const defaultTodos = [
+//   { text: "Cortar cebolla", completed: true },
+//   { text: "Tomar curso de React", completed: false },
+//   { text: "Lorar con la Llorona", completed: true },
+//   { text: "Otra cosa", completed: false },
+//   { text: "Otra cosa 2", completed: false },
+// ];
+
+// localStorage.setItem("TODOS_V1", JSON.stringify(defaultTodos));
+// localStorage.removeItem("TODOS_V1");
 
 const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
+  console.log('ejecutando provider')
   const {
     item: todos,
     saveItem: saveTodos,
@@ -44,8 +55,7 @@ function TodoProvider({ children }) {
   };
 
   return (
-    <TodoContext.Provider
-      value={{
+    <TodoContext.Provider value={{
         loading,
         error,
         completedTodos,
@@ -57,9 +67,10 @@ function TodoProvider({ children }) {
         deleteTodo,
       }}
     >
-      {children} // le pasamos el componente hijo que podra utilizar // las
-      props que estamos pasando arriba.
+      {children}
     </TodoContext.Provider>
+     // le pasamos el componente hijo que podra utilizar // las
+    // props que estamos pasando arriba.
   );
 }
 
