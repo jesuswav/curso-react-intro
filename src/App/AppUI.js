@@ -9,6 +9,7 @@ import { EmtyTodos } from "../EmtyTodos";
 import { CreateTodoButton } from "../TodoButton";
 import { TodoContext } from "../TodoContext";
 import { Modal } from "../Modal";
+import { TodoForm } from "../TodoForm";
 
 function AppUI() {
   const {
@@ -18,7 +19,7 @@ function AppUI() {
     completeTodo,
     deleteTodo,
     openModal,
-    setOpenModal 
+    setOpenModal,
     } = React.useContext(TodoContext);
 
   return (
@@ -48,7 +49,7 @@ function AppUI() {
 
       {openModal && (
         <Modal>
-          Funcionalidad de agregar todo
+          <TodoForm />
         </Modal>
       )}
     </>

@@ -24,7 +24,7 @@ function TodoProvider({ children }) {
   } = useLocalStorage("TODOS_V1", []); // estado
   // ahora podemos llamar a nuestro custom hook en lugar de el actualizador de react
   const [searchValue, setSearchValue] = React.useState(''); //estado para buscar
-  const [openModal, setOpenModal] = React.useState(true);
+  const [openModal, setOpenModal] = React.useState(false);
 
   // estados derivados
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
@@ -36,6 +36,16 @@ function TodoProvider({ children }) {
     const searchText = searchValue.toLowerCase();
     return todoText.includes(searchText);
   });
+
+  // añadir nuevos TODOS
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      text,
+      completed: false,
+    });
+    saveTodos(newTodos);
+  };
 
   const completeTodo = (text) => {
     const newTodos = [...todos]; //nuevo array que recibe los valores actuales en cada actualización
@@ -68,6 +78,7 @@ function TodoProvider({ children }) {
         deleteTodo,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {children}
