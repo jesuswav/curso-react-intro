@@ -1,5 +1,5 @@
 .Modal-container {
-  background-color: rgba(32,35,41,.8);
+  background-color: rgba(32, 35, 41, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,34 @@
 }
 
 .Modal {
+  width: 28%;
+  height: 26%;
   background-color: rgb(255, 255, 255);
   opacity: 1;
   border-radius: 10px;
+
+  animation: .25s modal ease-in-out;
+}
+@keyframes modal {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .Modal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .Modal {
+    width: 90%;
+    height: 30%;
+  }
 }

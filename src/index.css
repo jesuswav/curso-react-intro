@@ -1,18 +1,28 @@
 #root {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 500px;
+  justify-content: center;
+  width: 50%;
   height: 100%;
 }
 
 body {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: rgb(243, 243, 243);
+
+  animation: .5s body ease-in-out;
+}
+@keyframes body {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .TodoCounter {
@@ -23,7 +33,7 @@ body {
   padding: 48px;
 }
 
-.TodoSearch{
+.TodoSearch {
   text-align: center;
   width: 100%;
   height: 50px;
@@ -45,7 +55,7 @@ body {
   border: solid 1px;
   border-radius: 10px;
   margin: 10px 0px 10px -25px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   box-shadow: 0px 5px 25px rgba(143, 143, 143, 0.5);
 }
 
@@ -62,6 +72,8 @@ body {
   align-items: center;
   width: 90%;
   margin-top: -5px;
+
+  animation: .25s modal ease-in-out;
 }
 
 .TodoItem-p {
@@ -89,7 +101,7 @@ body {
   bottom: 24px;
   right: 24px;
   font-weight: bold;
-  color: #FAFAFA;
+  color: #fafafa;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,9 +109,56 @@ body {
   width: 64px;
 
   transform: rotate(0);
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .TodoButton:hover {
   transform: rotate(224deg);
+}
+
+@media (max-width: 600px) {
+  #root {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  html,
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+  .TodoCounter {
+    width: 90%;
+    padding: 48px 0px 48px 0px;
+  }
+  .TodoSearch {
+    width: 90%;
+  }
+  .TodoItem {
+    width: 96%;
+    padding: 0px;
+  }
+  .TodoButton {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+  .TodoList {
+    padding: 5px 0px 5px 0px;
+    width: 90%;
+  }
+  .TodoListDiv {
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+  }
 }
