@@ -2,11 +2,11 @@ import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 // const defaultTodos = [
-//   { text: "Cortar cebolla", completed: true },
-//   { text: "Tomar curso de React", completed: false },
-//   { text: "Lorar con la Llorona", completed: true },
-//   { text: "Otra cosa", completed: false },
-//   { text: "Otra cosa 2", completed: false },
+//   { text: "Cortar cebolla", completed: true, category: "Deportes" },
+//   { text: "Tomar curso de React", completed: false, category: "Casa" },
+//   { text: "Lorar con la Llorona", completed: true, category: "Cocina" },
+//   { text: "Otra cosa", completed: false, category: "Trabajo" },
+//   { text: "Otra cosa 2", completed: false, category: "Journaling" },
 // ];
 
 // localStorage.setItem("TODOS_V1", JSON.stringify(defaultTodos));
@@ -38,12 +38,14 @@ function TodoProvider({ children }) {
   });
 
   // añadir nuevos TODOS
-  const addTodo = (text) => {
+  const addTodo = (text, category) => {
     const newTodos = [...todos];
     newTodos.push({
       text,
       completed: false,
+      category,
     });
+    console.log('categoria' + category);
     saveTodos(newTodos);
   };
 
@@ -63,6 +65,10 @@ function TodoProvider({ children }) {
     );
     newTodos.splice(todoIndex, 1); //con este método cortamos los
     saveTodos(newTodos); //guardamos la modificación del array en localStorage
+  };
+
+  const todoCategory = (category) => {
+    const newTodos = [...todos];
   };
 
   return (

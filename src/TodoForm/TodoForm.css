@@ -26,6 +26,17 @@ textarea {
   background-color: rgb(26, 113, 189);
 }
 
+select {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+
+  height: 38px;
+  width: 128px;
+  border-radius: 4px;
+  border: 2px solid rgb(26, 113, 189);
+}
+
 
 .TodoForm-button {
   background-color: rgb(26, 113, 189);

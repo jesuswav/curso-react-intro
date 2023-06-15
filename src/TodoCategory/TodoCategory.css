@@ -1,0 +1,23 @@
+.TodoCategoryDiv {
+  height: 56px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TodoCategoryDiv * {
+  margin: 0px 10px 0px 10px;
+}
+.TodoCategoryDiv label {
+  font-weight: bold;
+  font-size: 18px;
+}
+.TodoCategoryDiv select {
+  text-align: center;
+
+  height: 38px;
+  width: 128px;
+  border-radius: 4px;
+}

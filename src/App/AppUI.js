@@ -10,6 +10,7 @@ import { CreateTodoButton } from "../TodoButton";
 import { TodoContext } from "../TodoContext";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
+import { TodoCategory } from "../TodoCategory";
 
 function AppUI() {
   const {
@@ -27,6 +28,8 @@ function AppUI() {
       <TodoCounter />
       <TodoSearch />
 
+      <TodoCategory />
+
       <TodoList>
         {loading && <TodosLoading />}
         {console.log("loading" + loading)}
@@ -38,6 +41,7 @@ function AppUI() {
           <TodoItem
             key={todo.text}
             text={todo.text}
+            category={todo.category}
             completed={todo.completed}
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}

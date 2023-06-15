@@ -10,6 +10,7 @@ function TodoItem(props) {
           onComplete={props.onComplete}
         />
         <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>{props.text}</p>
+        <p className='TodoItem-p-category'>{props.category}</p>
         <DeleteIcon 
           onDelete={props.onDelete}
         />

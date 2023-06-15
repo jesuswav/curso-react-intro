@@ -1,6 +1,5 @@
 import React from "react";
 
-
 //usamos la palabra use como convención
 function useLocalStorage(itemName, initialValue) {
   console.log("ejecutando localStorage");
