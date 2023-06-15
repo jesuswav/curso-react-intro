@@ -14,7 +14,7 @@ body {
   justify-content: center;
   background-color: rgb(243, 243, 243);
 
-  animation: .5s body ease-in-out;
+  animation: 0.5s body ease-in-out;
 }
 @keyframes body {
   0% {
@@ -68,17 +68,19 @@ body {
 .TodoItem {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 90%;
   margin-top: -5px;
+  padding: 0px 10px 0px 20px;
 
-  animation: .25s modal ease-in-out;
+  animation: 0.25s modal ease-in-out;
 }
 
 .TodoItem-p {
   margin: 24px 0 24px 24px;
-  width: calc(100% - 120px);
+  padding: 0 5px 0 5px;
+  /* width: calc(100% - 120px); */
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -86,6 +88,7 @@ body {
 
 .TodoItem-p--complete {
   text-decoration: line-through;
+  padding: 0px;
 }
 
 .TodoButton {
@@ -138,15 +141,14 @@ body {
     padding: 0px;
   }
   .TodoCounter {
-    width: 90%;
+    width: 85%;
     padding: 48px 0px 48px 0px;
   }
   .TodoSearch {
     width: 90%;
   }
   .TodoItem {
-    width: 96%;
-    padding: 0px;
+    width: 92%;
   }
   .TodoButton {
     position: absolute;

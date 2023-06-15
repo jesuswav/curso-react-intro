@@ -1,14 +1,25 @@
 import React from "react";
 import "./TodoCategory.css";
+import { TodoContext } from "../TodoContext";
 
-function TodoCategory(props) {
+function TodoCategory() {
+  // setear el search value
+  const {
+    searchCategory,
+    setSearchCategory
+  } = React.useContext(TodoContext);
   return (
     <div className="TodoCategoryDiv">
       <div className="TodoCategoryFilterDiv">
         <label>Categoria:</label>
-        <label>Deportes</label>
+        <label>{searchCategory}</label>
       </div>
-      <select>
+      <select
+        value={searchCategory}
+        onChange={(event) => {
+          setSearchCategory(event.target.value); //actualizar el valor a buscar
+        }}
+      >
         <option>Categoria</option>
         <option>Deportes</option>
         <option>Journaling</option>
@@ -16,17 +27,6 @@ function TodoCategory(props) {
         <option>Casa</option>
         <option>Universidad</option>
       </select>
-      {/* <li className="TodoCategory">
-        
-        <Category 
-          completed={props.completed}
-          category={props.completed}
-        />
-        <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>{props.text}</p>
-        <DeleteIcon 
-          onDelete={props.onDelete}
-        />
-      </li> */}
     </div>
   );
 }

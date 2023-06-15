@@ -17,11 +17,12 @@ function AppUI() {
     loading,
     error,
     searchedTodos,
+    searchedCategories,
     completeTodo,
     deleteTodo,
     openModal,
     setOpenModal,
-    } = React.useContext(TodoContext);
+  } = React.useContext(TodoContext);
 
   return (
     <>
@@ -35,9 +36,44 @@ function AppUI() {
         {console.log("loading" + loading)}
         {error && <TodosError />}
         {!loading && searchedTodos.length === 0 && <EmtyTodos />}
+        {!loading &&
+          searchedCategories.length >= 1 &&
+          searchedCategories.map((todo) => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              category={todo.category}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          )) || searchedCategories === 'Categoria' || searchedTodos.map((todo) => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              category={todo.category}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          ))}
+        {!loading &&
+          searchedTodos.length === 0 &&
+          searchedCategories === 0 &&
+          searchedTodos.map((todo) => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              category={todo.category}
+              completed={todo.completed}
+              onComplete={() => completeTodo(todo.text)}
+              onDelete={() => deleteTodo(todo.text)}
+            />
+          ))}
+        {console.log("Categorias buscadas " + searchedCategories)}
         {console.log("Todos buscados " + searchedTodos)}
 
-        {searchedTodos.map((todo) => (
+        {/* {searchedTodos.map((todo) => (
           <TodoItem
             key={todo.text}
             text={todo.text}
@@ -46,7 +82,7 @@ function AppUI() {
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
           />
-        ))}
+        ))} */}
       </TodoList>
 
       <CreateTodoButton />
