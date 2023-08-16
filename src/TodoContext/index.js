@@ -15,7 +15,7 @@ import { useLocalStorage } from "./useLocalStorage";
 const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
-  console.log('ejecutando provider')
+  console.log("ejecutando provider");
   const {
     item: todos,
     saveItem: saveTodos,
@@ -23,9 +23,9 @@ function TodoProvider({ children }) {
     error,
   } = useLocalStorage("TODOS_V1", []); // estado
   // ahora podemos llamar a nuestro custom hook en lugar de el actualizador de react
-  const [searchValue, setSearchValue] = React.useState(''); //estado para buscar
+  const [searchValue, setSearchValue] = React.useState(""); //estado para buscar
   const [openModal, setOpenModal] = React.useState(false);
-  const [searchCategory, setSearchCategory] = React.useState('');
+  const [searchCategory, setSearchCategory] = React.useState("");
 
   // estados derivados
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
@@ -40,11 +40,14 @@ function TodoProvider({ children }) {
 
   // buscar categorias
   const searchedCategories = todos.filter((todo) => {
-    const todoCategory = todo.category.toLowerCase();
-    console.log('categoria: --- ' + searchCategory);
-    const searchCategoryValue = searchCategory.toLowerCase();
+    let todoCategory = todo.category;
+    if (todoCategory === undefined) {
+      todoCategory = "Categoria";
+    }
+    console.log("categoria: --- " + searchCategory);
+    const searchCategoryValue = searchCategory;
     return todoCategory.includes(searchCategoryValue);
-  })
+  });
 
   // añadir nuevos TODOS
   const addTodo = (text, category) => {
@@ -54,7 +57,7 @@ function TodoProvider({ children }) {
       completed: false,
       category,
     });
-    console.log('categoria' + category);
+    console.log("categoria" + category);
     saveTodos(newTodos);
   };
 
@@ -77,7 +80,8 @@ function TodoProvider({ children }) {
   };
 
   return (
-    <TodoContext.Provider value={{
+    <TodoContext.Provider
+      value={{
         loading,
         error,
         completedTodos,
@@ -97,10 +101,9 @@ function TodoProvider({ children }) {
     >
       {children}
     </TodoContext.Provider>
-     // le pasamos el componente hijo que podra utilizar // las
+    // le pasamos el componente hijo que podra utilizar // las
     // props que estamos pasando arriba.
   );
 }
 
 export { TodoContext, TodoProvider };
-

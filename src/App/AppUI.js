@@ -47,7 +47,7 @@ function AppUI() {
               onComplete={() => completeTodo(todo.text)}
               onDelete={() => deleteTodo(todo.text)}
             />
-          )) || searchedCategories === 'Categoria' && searchedTodos.map((todo) => (
+          )) || searchedCategories === 'Categoria' || searchedTodos.map((todo) => (
             <TodoItem
               key={todo.text}
               text={todo.text}
